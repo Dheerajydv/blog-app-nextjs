@@ -44,7 +44,7 @@ export async function GET(request: Request, { params }: any) {
 
 }
 
-export async function PUT(request: Request, { params }: { params: { slug: string } }) {
+export async function PUT(request: Request, { params }: any) {
     await dbConnect();
 
     const slug = params.slug;
@@ -93,7 +93,7 @@ export async function PUT(request: Request, { params }: { params: { slug: string
     }
 }
 
-export async function DELETE(request: Request, { params }: { params: { slug: string } }) {
+export async function DELETE(request: Request, { params }: any) {
     await dbConnect();
 
     const slug = params.slug;
