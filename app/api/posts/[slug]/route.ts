@@ -2,7 +2,7 @@ import { dbConnect } from "@/lib/dbConnect";
 import Post from "@/models/Blog";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/options";
-import { generateSlugFromTitle } from "../create/route";
+import generateSlugFromTitle from "@/lib/generateSlugFromTitle";
 
 
 
