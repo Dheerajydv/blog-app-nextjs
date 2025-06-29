@@ -13,7 +13,7 @@ export interface IPost extends Document {
     updatedAt?: Date;
 }
 
-export interface PramsContext {
+export interface ParamContext {
     params: {
         slug: string;
     };

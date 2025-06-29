@@ -3,13 +3,13 @@ import Post from "@/models/Blog";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/options";
 import { generateSlugFromTitle } from "../create/route";
-import { PramsContext } from "../../../../types/types"
+import { ParamContext } from "../../../../types/types"
 
 
-export async function GET(request: Request, { params }: PramsContext) {
+export async function GET(request: Request, { params }: ParamContext) {
     await dbConnect();
 
-    const slug = params.slug;
+    const { slug } = params;
 
     if (!slug) {
         return Response.json({
@@ -44,7 +44,7 @@ export async function GET(request: Request, { params }: PramsContext) {
 
 }
 
-export async function PUT(request: Request, { params }: PramsContext) {
+export async function PUT(request: Request, { params }: ParamContext) {
     await dbConnect();
 
     const slug = params.slug;
@@ -93,7 +93,7 @@ export async function PUT(request: Request, { params }: PramsContext) {
     }
 }
 
-export async function DELETE(request: Request, { params }: PramsContext) {
+export async function DELETE(request: Request, { params }: ParamContext) {
     await dbConnect();
 
     const slug = params.slug;
