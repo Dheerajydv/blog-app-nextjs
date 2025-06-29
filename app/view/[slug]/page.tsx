@@ -82,9 +82,7 @@ const page = () => {
                             </div>
                         }
                     </div>
-                    <span className="text-black">
-                        {postData.content}
-                    </span>
+                    <div dangerouslySetInnerHTML={{ __html: postData.content }}></div>
                 </>
             )}
         </div>

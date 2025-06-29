@@ -38,3 +38,8 @@ export interface IPostData {
     createdAt?: string;
     slug?: string;
 }
+
+export interface ITinyMCEPorp {
+    content: string;
+    setContent: React.Dispatch<React.SetStateAction<string>>;
+}

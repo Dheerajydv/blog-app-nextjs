@@ -1,6 +1,6 @@
 "use client"
 
-import Editor from "@/components/Editor"
+import EditorWrapper from "@/components/EditorWrapper"
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useState } from "react"
@@ -36,7 +36,7 @@ const page = () => {
             {loading ? "Creating Post......" :
                 <div className="flex flex-col h-full">
                     <div className="min-h-3/4">
-                        <Editor title={title} setTitle={setTitle} content={content} setContent={setContent} slug={slug} setSlug={setSlug} />
+                        <EditorWrapper title={title} setTitle={setTitle} content={content} setContent={setContent} slug={slug} setSlug={setSlug} />
                     </div>
                     <div className="flex h-1/4 w-full justify-around items-center">
                         <Button onClick={handleCreatePost}>Create</Button>

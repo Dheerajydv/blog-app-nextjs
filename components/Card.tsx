@@ -29,7 +29,7 @@ const CardComp = ({ title, slug, content, createdAt }: ICardProp) => {
                 </CardAction>
             </CardHeader>
             <CardContent>
-                {content.slice(0, 100)}
+                <div dangerouslySetInnerHTML={{ __html: content.slice(0, 500) }}></div>
             </CardContent>
         </Card>
     )

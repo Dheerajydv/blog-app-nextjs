@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
+import TinyMCE from "@/components/tinymce/Editor"
 
 export interface IEditorProps {
     title: string;
@@ -14,7 +14,7 @@ export interface IEditorProps {
 }
 
 
-const Editor = ({ title, setTitle, content, setContent, slug, setSlug }: IEditorProps) => {
+const EditorWrapper = ({ title, setTitle, content, setContent, slug, setSlug }: IEditorProps) => {
 
     const [frontSlug, setFrontSlug] = useState("");
 
@@ -44,10 +44,8 @@ const Editor = ({ title, setTitle, content, setContent, slug, setSlug }: IEditor
             <label htmlFor="slug">Slug</label>
             <Input id="slug" type="text" placeholder="Slug: Auto Generated" value={frontSlug} readOnly />
             <label htmlFor="content">Content</label>
-            <Textarea id="content" placeholder="Your MAIN Content" value={content} onChange={
-                (e) => { setContent(e.target.value) }
-            } />
+            <TinyMCE content={content} setContent={setContent} />
         </div>
     )
 }
-export default Editor
+export default EditorWrapper
