@@ -34,10 +34,14 @@ const page = () => {
     return (
         <div className="h-screen w-screen p-4">
             {loading ? "Creating Post......" :
-                <>
-                    <Editor title={title} setTitle={setTitle} content={content} setContent={setContent} slug={slug} setSlug={setSlug} />
-                    <div><Button onClick={handleCreatePost}>Create</Button></div>
-                </>}
+                <div className="flex flex-col h-full">
+                    <div className="min-h-3/4">
+                        <Editor title={title} setTitle={setTitle} content={content} setContent={setContent} slug={slug} setSlug={setSlug} />
+                    </div>
+                    <div className="flex h-1/4 w-full justify-around items-center">
+                        <Button onClick={handleCreatePost}>Create</Button>
+                    </div>
+                </div>}
         </div>
     )
 }

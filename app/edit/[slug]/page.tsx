@@ -56,13 +56,15 @@ const page = () => {
     return (
         <div className="h-screen w-screen p-4">
             {loading ? "Editing Post......" :
-                <>
-                    <Editor title={title} setTitle={setTitle} content={content} setContent={setContent} slug={slugValue} setSlug={setSlugValue} />
-                    <div>
-                        <Button onClick={handleEditPost}>Edit</Button>
-                        <Button onClick={() => { redirect("/view/all") }}>Edit</Button>
+                <div className="flex flex-col h-full">
+                    <div className="min-h-3/4">
+                        <Editor title={title} setTitle={setTitle} content={content} setContent={setContent} slug={slugValue} setSlug={setSlugValue} />
                     </div>
-                </>}
+                    <div className="flex h-1/4 w-full justify-around items-center">
+                        <Button onClick={handleEditPost}>Edit</Button>
+                        <Button variant="destructive" onClick={() => { redirect("/view/all") }}>Cancel</Button>
+                    </div>
+                </div>}
         </div>
     )
 }
