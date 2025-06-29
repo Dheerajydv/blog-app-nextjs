@@ -22,7 +22,7 @@ const CardComp = ({ title, slug, content, createdAt }: ICardProp) => {
             <CardHeader>
                 <CardTitle>{title}</CardTitle>
                 <CardDescription>
-                    Created At: {createdAt.slice(0, 10)}
+                    Created At: {createdAt?.slice(0, 10)}
                 </CardDescription>
                 <CardAction>
                     <Button onClick={handleViewPost} variant="link">View</Button>

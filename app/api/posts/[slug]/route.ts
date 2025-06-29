@@ -3,6 +3,7 @@ import Post from "@/models/Blog";
 import { IApiResponse } from "@/types/types";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/options";
+import { generateSlugFromTitle } from "../create/route";
 
 export async function GET(request: Request, { params }: { params: { slug: string } }) {
     await dbConnect();
@@ -65,7 +66,9 @@ export async function PUT(request: Request, { params }: { params: { slug: string
     try {
         const { title, content } = await request.json();
 
-        const post = await Post.findOneAndUpdate({ slug }, { title, content }, { new: true });
+        const newSlug = generateSlugFromTitle(title);
+
+        const post = await Post.findOneAndUpdate({ slug }, { title, content, slug: newSlug }, { new: true });
 
         if (!post) {
             return Response.json({

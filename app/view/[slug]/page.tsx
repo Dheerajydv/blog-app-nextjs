@@ -3,18 +3,20 @@
 import { Button } from "@/components/ui/button";
 import { IPostData } from "@/types/types";
 import axios from "axios";
-import moment from "moment"
-import { useParams } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { redirect, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner"
 
 
 const page = () => {
 
+    const session = useSession();
     const params = useParams<{ slug: string }>();
     const slug = params.slug;
 
     //states
+    const [isLogin, setIsLogin] = useState(false);
     const [loading, setLoading] = useState(false);
     const [postData, setPostData] = useState<IPostData>({
         title: "",
@@ -34,6 +36,10 @@ const page = () => {
         }
     }
 
+    const handleEditPost = () => {
+        redirect(`/edit/${slug}`);
+    }
+
     const fetchPost = async () => {
         setLoading(true);
         try {
@@ -51,8 +57,14 @@ const page = () => {
     }
 
     useEffect(() => {
+        if (session.status !== "unauthenticated" && session.status !== "loading") {
+            setIsLogin(true);
+        } else {
+            setIsLogin(false);
+        }
+
         fetchPost();
-    }, [])
+    }, [isLogin, setIsLogin])
 
 
     return (
@@ -61,11 +73,14 @@ const page = () => {
                 <>
                     <h1 className="text-5xl font-extrabold text-center">{postData.title}</h1>
                     <div className="flex justify-between items-center">
-                        <p className="font-bold">Created At: {postData.createdAt.slice(0, 10)}</p>
-                        <div className="flex flex-wrap items-center gap-2 md:flex-row">
-                            <Button className="cursor-pointer" >Edit</Button>
-                            <Button className="cursor-pointer" onClick={handleDeletePost} variant="destructive">Delete</Button>
-                        </div>
+                        <p className="font-bold">Created At: {postData.createdAt?.slice(0, 10)}</p>
+                        {
+                            isLogin &&
+                            <div className="flex flex-wrap items-center gap-2 md:flex-row">
+                                <Button className="cursor-pointer" onClick={handleEditPost} >Edit</Button>
+                                <Button className="cursor-pointer" onClick={handleDeletePost} variant="destructive">Delete</Button>
+                            </div>
+                        }
                     </div>
                     <span className="text-black">
                         {postData.content}

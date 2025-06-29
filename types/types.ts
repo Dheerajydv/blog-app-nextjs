@@ -9,8 +9,8 @@ export interface IPost extends Document {
     title: string;
     content: string;
     slug: string;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 
 export interface IApiResponse {
@@ -22,13 +22,13 @@ export interface IApiResponse {
 export interface ICardProp {
     title: string;
     content: string;
-    createdAt: string;
+    createdAt?: string;
     slug?: string;
 }
 
 export interface IPostData {
     title: string;
     content: string;
-    createdAt: string;
+    createdAt?: string;
     slug?: string;
 }

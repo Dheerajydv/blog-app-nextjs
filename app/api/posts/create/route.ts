@@ -4,7 +4,7 @@ import { getServerSession, User as UserType } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/options";
 import Admin from "@/models/Admin";
 
-const generateSlugFromTitle = (title: string): string => {
+export const generateSlugFromTitle = (title: string): string => {
     let generatedSlug = title.toLowerCase();
 
     // Replace special characters with their ASCII equivalents (e.g., 'á' to 'a').
