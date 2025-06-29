@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/options";
 import { generateSlugFromTitle } from "../create/route";
 
-export async function GET(request: Request, { params }: { params: { slug: string } }) {
+export async function GET({ params }: { params: { slug: string } }) {
     await dbConnect();
 
     const slug = params.slug;
