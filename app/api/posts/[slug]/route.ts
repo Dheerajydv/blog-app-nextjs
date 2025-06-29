@@ -6,10 +6,10 @@ import { generateSlugFromTitle } from "../create/route";
 
 
 
-export async function GET(request: Request, { params }: { params: { slug: string } }) {
+export async function GET(request: Request, context: { params: { slug: string } }) {
     await dbConnect();
 
-    const { slug } = params;
+    const { slug } = context.params;
 
     if (!slug) {
         return Response.json({
