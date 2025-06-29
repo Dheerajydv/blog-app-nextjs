@@ -13,6 +13,12 @@ export interface IPost extends Document {
     updatedAt?: Date;
 }
 
+export interface pramsContext {
+    params: {
+        slug: string;
+    };
+}
+
 export interface IApiResponse {
     sucess: boolean;
     data?: IPost | IPost[];
