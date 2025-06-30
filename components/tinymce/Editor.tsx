@@ -16,7 +16,7 @@ export default function App({ content, setContent }: ITinyMCEPorp) {
     return (
         <>
             <Editor
-                apiKey={process.env.TINYMCE_API_KEY}
+                apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
                 onInit={(_evt, editor) => editorRef.current = editor}
                 initialValue={content}
                 onChange={handleOnChange}
